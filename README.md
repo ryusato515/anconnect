@@ -74,5 +74,6 @@
 - Googleログイン
 
 ## 画面遷移図
+[画面遷移図](https://www.figma.com/file/QtPiLQ1xJznPdVkiXgZuZJ/%E7%84%A1%E9%A1%8C?type=design&node-id=0-1&mode=design&t=yd9ESohdf4IH4Dph-0)
 
 ## ER図
