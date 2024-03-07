@@ -77,4 +77,4 @@
 [画面遷移図](https://www.figma.com/file/QtPiLQ1xJznPdVkiXgZuZJ/%E7%84%A1%E9%A1%8C?type=design&node-id=0-1&mode=design&t=yd9ESohdf4IH4Dph-0)
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/064433390233154a7f41b97ba3a0e172.png)](https://gyazo.com/064433390233154a7f41b97ba3a0e172)
+[![Image from Gyazo](https://i.gyazo.com/1173e71850283f7008bc69622ac2e5e3.png)](https://gyazo.com/1173e71850283f7008bc69622ac2e5e3)
