@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit', 
   content: [
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
@@ -12,5 +13,12 @@ module.exports = {
     themes: [
       "bumblebee"
     ],
+  },
+  theme: {
+    extend: {
+      colors: {
+        customred: '#562E37',
+      },
+    },
   },
 }
