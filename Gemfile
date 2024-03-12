@@ -84,7 +84,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'letter_opener_web'
   gem "better_errors"
   gem "binding_of_caller"
 
@@ -96,3 +95,5 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
