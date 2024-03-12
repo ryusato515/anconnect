@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for anconnect on 2024-03-12T09:37:14+09:00
+# fly.toml app configuration file generated for anconnect on 2024-03-12T14:48:49+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -26,5 +26,5 @@ console_command = '/rails/bin/rails console'
   cpus = 1
 
 [[statics]]
-  guest_path = '/app/public'
+  guest_path = '/rails/public'
   url_prefix = '/'
