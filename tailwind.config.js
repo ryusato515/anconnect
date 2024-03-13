@@ -18,6 +18,9 @@ module.exports = {
     extend: {
       colors: {
         customred: '#562E37',
+        customorange: '#D19826',
+        customorange_1: '#855B32',
+        custompink: '#B19693',
       },
     },
   },
