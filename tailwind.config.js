@@ -7,11 +7,9 @@ module.exports = {
     './app/javascript/**/*.js'
   ],
   plugins: [
-    require('daisyui')
   ],
   daisyui: {
     themes: [
-      "bumblebee"
     ],
   },
   theme: {
