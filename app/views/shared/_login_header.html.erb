@@ -1,12 +1,12 @@
 <header class="flex h-16 items-center justify-between bg-customred px-10 py-4 text-white">
   <div class="text-xl font-bold">
-    <a href="#" class="hover:text-gray-400">あんこねくと</a>
+    <%= link_to 'あんこねくと', root_path, class: 'text-xl font-bold hover:text-gray-400' %>
   </div>
 
   <div class="md:flex text-md space-x-8">
-    <a href="#" class="hover:text-gray-400">探す</a>
-    <a href="#" class="hover:text-gray-400">新規投稿</a>
-    <a href="#" class="hover:text-gray-400">マイページ</a>
-    <a href="#" class="hover:text-gray-400">ログアウト</a>
+    <%= link_to '探す', '#', class: 'hover:text-gray-400' %>
+    <%= link_to '新規投稿', '#', class: 'hover:text-gray-400' %>
+    <%= link_to 'マイページ', '#', class: 'hover:text-gray-400' %>
+    <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'hover:text-gray-400'%>
   </div>
 </header>

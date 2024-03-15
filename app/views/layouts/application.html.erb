@@ -7,14 +7,20 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
     <script src="https://kit.fontawesome.com/6a3a80e81e.js" crossorigin="anonymous"></script>
+    <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render "shared/before_login_header" %>
-    <%= yield %>
+  <body class="flex flex-col min-h-screen">
+    <% if logged_in? %>
+      <%= render "shared/login_header" %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+    <div class="flex-grow">
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>

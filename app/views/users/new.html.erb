@@ -2,39 +2,39 @@
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
     <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">会員登録</h2>
 
-    <form class="mx-auto max-w-lg rounded-lg border">
+    <%= form_with model: @user, url: users_path, class: 'mx-auto max-w-lg rounded-lg border' do |f| %>
       <div class="flex flex-col gap-4 p-4 md:p-8">
         <div>
-          <label for="name" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">名前</label>
-          <input name="name" class="ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring" />
+          <%= f.label :name, '名前', class: 'mb-2 inline-block text-sm text-gray-800 sm:text-base' %>
+          <%= f.text_field :name, class: 'ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring' %>
         </div>
 
         <div>
-          <label for="email" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">メールアドレス</label>
-          <input name="email" class="ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring" />
+          <%= f.label :email, 'メールアドレス', class: 'mb-2 inline-block text-sm text-gray-800 sm:text-base' %>
+          <%= f.email_field :email, class: 'ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring' %>
         </div>
 
         <div>
-          <label for="password" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">パスワード</label>
-          <input name="password" class="ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring" />
+          <%= f.label :password, 'パスワード', class: 'mb-2 inline-block text-sm text-gray-800 sm:text-base' %>
+          <%= f.password_field :password, class: 'ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring' %>
         </div>
 
         <div>
-          <label for="password" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">パスワード（確認用）</label>
-          <input name="password" class="ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring" />
+          <%= f.label :password_confirmation, 'パスワード（確認用）', class: 'mb-2 inline-block text-sm text-gray-800 sm:text-base' %>
+          <%= f.password_field :password_confirmation, class: 'ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring' %>
         </div>
 
-        <button class="bg-customred mt-3 block rounded-lg px-8 py-3 text-center font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base">会員登録する</button>
+        <%= f.submit '会員登録する', class: 'bg-customred mt-3 block rounded-lg px-8 py-3 text-center font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base' %>
       </div>
 
       <div class="flex items-center justify-center bg-gray-100 p-2">
         <div class="flex flex-col items-center">
           <p class="p-1 text-center text-base text-gray-500">
             ログインは
-            <a href="#" class="text-customorange hover:text-customorange_1 active:text-customorange_1 transition duration-100"> こちら </a>
+            <%= link_to 'こちら', login_path, class: 'text-customorange hover:text-customorange_1 active:text-customorange_1 transition duration-100' %>
           </p>
         </div>
       </div>
-    </form>
+    <% end %>
   </div>
 </div>
