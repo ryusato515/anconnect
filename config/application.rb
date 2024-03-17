@@ -25,5 +25,7 @@ module App
       g.helper false       # helperを生成しない
       g.test_framework false  # testファイルを生成しない
     end
+
+    config.i18n.default_locale = :ja
   end
 end
