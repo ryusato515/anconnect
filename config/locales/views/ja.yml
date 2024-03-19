@@ -1,4 +1,12 @@
 ja:
+  header:
+    title: あんこねくと
+    search: 探す
+    new_post: 新規投稿
+    my_page: マイページ
+    signup: 新規登録
+    login: ログイン
+    logout: ログアウト
   user_sessions:
     new:
       title: ログイン
@@ -8,6 +16,11 @@ ja:
       member_registration: 会員登録は
       password_forget: パスワード忘れた方は
       here: こちら
+    create:
+      success: ログインしました
+      failure: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
   users:
     new:
       title: 会員登録
@@ -18,11 +31,6 @@ ja:
       to_register_page: 会員登録する
       login: ログインは
       here: こちら
-  header:
-    title: あんこねくと
-    search: 探す
-    new_post: 新規投稿
-    my_page: マイページ
-    signup: 新規登録
-    login: ログイン
-    logout: ログアウト
+    create:
+      success: 会員登録が完了しました
+      failure: 会員登録に失敗しました
