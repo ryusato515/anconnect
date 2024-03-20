@@ -1,9 +1,9 @@
-<header class="flex h-16 items-center justify-between bg-customred px-10 py-4 text-white">
-  <div class="text-xl font-bold">
+<header class="flex h-16 items-center justify-between bg-customred text-white">
+  <div class="text-2xl font-bold ml-6">
     <%= link_to t('header.title'), root_path, class: 'text-xl font-bold hover:text-gray-400' %>
   </div>
 
-  <div class="md:flex text-md space-x-8">
+  <div class="md:flex text-base space-x-6 mx-6">
     <%= link_to t('header.search'), '#', class: 'hover:text-gray-400' %>
     <%= link_to t('header.new_post'), '#', class: 'hover:text-gray-400' %>
     <%= link_to t('header.my_page'), '#', class: 'hover:text-gray-400' %>

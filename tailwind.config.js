@@ -4,7 +4,8 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js'
+    './app/javascript/**/*.js',
+    './app/helpers/*.rb'
   ],
   plugins: [
   ],
@@ -19,6 +20,7 @@ module.exports = {
         customorange: '#D19826',
         customorange_1: '#855B32',
         custompink: '#B19693',
+        customgreen: '#90B44B'
       },
     },
   },
