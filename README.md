@@ -57,7 +57,6 @@
   - 種類（選択）
     - 材料（小倉あん・赤あん・白あん・うぐいすあん・ずんだあん・その他）
     - 製法（こしあん・つぶあん・小倉あん・つぶしあん）
-    - 菓子の種類（どらやき・羊羹・最中・饅頭・たい焼きなど選択できるようにする予定）
   - コメント
 - 検索
   - mapからの検索（Googleマップ上のマーカー）
@@ -77,4 +76,4 @@
 [画面遷移図](https://www.figma.com/file/QtPiLQ1xJznPdVkiXgZuZJ/%E7%84%A1%E9%A1%8C?type=design&node-id=0-1&mode=design&t=yd9ESohdf4IH4Dph-0)
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/1173e71850283f7008bc69622ac2e5e3.png)](https://gyazo.com/1173e71850283f7008bc69622ac2e5e3)
+[![Image from Gyazo](https://i.gyazo.com/50d95c2a90ef3d78eb1e8c9199830631.png)](https://gyazo.com/50d95c2a90ef3d78eb1e8c9199830631)
