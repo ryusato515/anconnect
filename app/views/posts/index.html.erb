@@ -1,0 +1,94 @@
+<div class="max-w-screen-3xl mx-auto bg-white px-4 py-2 ">
+  <div class="flex flex-col md:flex-row">
+<!-- 検索フォーム -->
+    <div class="basis-40 rounded px-4 border border-gray-900 ">
+      <h1 class="text-2xl font-bold text-center pt-2 text-gray-800">
+        検索条件
+      </h1>
+      <div class="my-4">
+        <h3 class=" text-md font-bold text-gray-800">
+          都道府県
+        </h3>
+        <select class="w-full rounded border px-3 py-1 text-gray-800 border-gray-500">
+          <option value="">選択</option>
+          <option value="option1">みんこの村</option>
+          <option value="option2">みんこの森</option>
+          <!-- 他のオプションを追加 -->
+        </select>
+      </div>
+      <div class="mt-4">
+        <button class="bg-customgreen_1 font-bold text-white hover:bg-customgreen w-full rounded border px-3 py-1 ">
+          地図で探す
+        </button>
+      </div>
+      <div>
+        <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの材料</h4>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">小倉あん</label>
+        </div>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">赤あん</label>
+        </div>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">白あん</label>
+        </div>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">うぐいすあん</label>
+        </div>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">ずんだあん</label>
+        </div>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">その他</label>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの製法</h4>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">つぶあん</label>
+        </div>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">こしあん</label>
+        </div>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">小倉あん</label>
+        </div>
+        <div class="mb-2 flex items-center">
+          <input type="checkbox" class="form-checkbox h-3 w-3" />
+          <label class="ml-2 text-gray-800">つぶしあん</label>
+        </div>
+      </div>
+      <h3 class="mt-4 mb-2 text-md font-bold text-gray-800">お菓子名</h3>
+      <div class="mb-6">
+        <input type="text" placeholder="どらやき,最中など・・・" class="w-full rounded border px-3 py-1 placeholder:text-xs  border-gray-500" />
+      </div>
+      <div class="mb-4">
+        <button class="bg-customred  font-bold text-white hover:bg-gray-600 w-full rounded border px-3 py-1 ">
+          検索
+        </button>
+      </div>
+    </div>
+<!-- 投稿一覧 -->
+    <div class="flex-auto bg-green-500">
+      <div class="max-w-screen-3xl mx-auto bg-green-200">
+        <h1 class="text-2xl font-bold text-center bg-green-900  pt-2 text-gray-800">
+          投稿一覧
+        </h1>
+        <% if @posts.present? %>
+        <%= render @posts %>
+        <% else %>
+          <div class="mt-6 text-center text-gray-800">掲示板がありません</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

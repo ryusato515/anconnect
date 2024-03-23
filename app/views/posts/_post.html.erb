@@ -1,0 +1,28 @@
+<div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 mt-4 pl-3">
+  <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <%= image_tag post.photo_image.url, alt: "お菓子の画像", class: "w-full h-40 object-cover" %>
+    <div class="p-2">
+      <h3 class="text-lg font-semibold mb-1">お菓子名</h3>
+      <div class="flex items-center mb-1">
+        <span class="text-gray-600 mr-2 text-sm sm:text-base">材料名：</span>
+        <span class="text-gray-800 text-sm sm:text-base">ウグイスアン</span>
+      </div>
+      <div class="flex items-center mb-1">
+        <span class="text-gray-600 mr-2 text-sm sm:text-base">種類名：</span>
+        <span class="text-gray-800 text-sm sm:text-base">最中</span>
+      </div>
+      <div class="flex items-center">
+        <span class="text-gray-600 mr-2 text-sm sm:text-base">都道府県名</span>
+      </div>
+        
+      <div class="flex items-center justify-between mt-3">
+        <button class="bg-pink-500 text-white py-1 px-2 rounded-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          <span class="text-xs sm:text-sm">編集</span>
+        </button>
+        <button class="bg-red-500 text-white py-1 px-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
+          <span class="text-xs sm:text-sm">いいね</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
