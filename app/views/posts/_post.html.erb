@@ -1,5 +1,7 @@
 <div class="overflow-hidden rounded-lg bg-white shadow-md">
-  <%= image_tag post.photo_image.url, alt: "お菓子の画像", class: "w-full h-40 object-cover" %>
+  <%= link_to post_path(post) do %>
+    <%= image_tag post.photo_image.url, alt: "お菓子の画像", class: "w-full h-40 object-cover" %>
+  <% end %>
   <div class="p-2">
       <h3 class="mb-1 text-lg font-semibold"><%= post.name %></h3>
     <div class="mb-1 flex items-center">
