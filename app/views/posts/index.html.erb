@@ -1,0 +1,56 @@
+<div class="max-w-screen-3xl mx-auto bg-red-100 px-4 py-2">
+  <div class="flex flex-col md:flex-row">
+    <!-- 検索フォーム -->
+    <div class="md:w-1/4 lg:w-1/6 rounded px-4 border border-gray-900 mb-4 md:mb-0 md:mr-4 whitespace-nowrap">
+    <h1 class="text-2xl font-bold text-center pt-2 text-gray-800">検索条件</h1>
+      <%= form_with url: posts_path, method: :get, local: true, class: "mt-4" do |form| %>
+        <div class="my-4">
+          <h3 class="text-md font-bold text-gray-800">都道府県</h3>
+          <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, { selected: @prefecture_id, include_blank: '選択なし' }, class: "w-full rounded border px-3 py-1 text-gray-800 border-gray-500" %>
+        </div>
+        <div class="mt-4">
+          <button type="button" class="bg-customgreen_1 font-bold text-white hover:bg-customgreen w-full rounded border px-3 py-1">地図で探す</button>
+        </div>
+        <div>
+          <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの材料</h4>
+          <% Ingredient.all.each_with_index do |ingredient, index| %>
+            <div class="mb-2 flex items-center">
+              <%= check_box_tag "ingredient_id[]", ingredient.id, @ingredient_ids.include?(ingredient.id.to_s), id: "ingredient_#{ingredient.id}", class: "form-checkbox h-3 w-3" %>
+              <%= label_tag "ingredient_#{ingredient.id}", ingredient.name, class: "ml-2 text-gray-800" %>
+            </div>
+          <% end %>
+        </div>
+        <div>
+          <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの製法</h4>
+          <% CookingMethod.all.each_with_index do |cooking_method, index| %>
+            <div class="mb-2 flex items-center">
+              <%= check_box_tag "cooking_method_id[]", cooking_method.id, @cooking_method_ids.include?(cooking_method.id.to_s), id: "cooking_method_#{cooking_method.id}", class: "form-checkbox h-3 w-3" %>
+              <%= label_tag "cooking_method_#{cooking_method.id}", cooking_method.name, class: "ml-2 text-gray-800" %>
+            </div>
+          <% end %>
+        </div>
+        <h3 class="mt-4 mb-2 text-md font-bold text-gray-800">お菓子名</h3>
+        <div class="mb-6">
+          <%= form.text_field :name, value: @name, placeholder: "どらやき,最中など・・・", class: "w-full rounded border px-3 py-1 placeholder:text-xs border-gray-500", autocomplete: 'name' %>
+        </div>
+        <div class="mb-4">
+          <%= form.submit "検索", class: "bg-customred font-bold text-white hover:bg-gray-600 w-full rounded border px-3 py-1" %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- 投稿一覧 -->
+    <div class="flex-auto">
+      <div class="max-w-screen-3xl mx-auto bg-green-200">
+        <h1 class="text-2xl font-bold text-center bg-green-900 pt-2 text-gray-800">投稿一覧</h1>
+        <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 mt-4">
+          <% if @posts.present? %>
+            <%= render @posts %>
+          <% else %>
+            <h3>掲示板がありません</h3>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

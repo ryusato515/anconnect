@@ -7,4 +7,5 @@ module ApplicationHelper
     else "bg-gray-500"
     end
   end
+
 end

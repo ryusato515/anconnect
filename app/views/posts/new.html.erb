@@ -1,0 +1,51 @@
+
+<%= form_with model: @post, url: posts_path, multipart: true, local: true do |f| %>
+<%= render 'shared/error_messages', object: f.object %> 
+  <div class="bg-white py-6 sm:py-8 lg:py-12">
+    <div class="mx-auto max-w-screen-3xl px-8 md:px-8">
+      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">新規投稿</h2>
+      <div class="mx-auto max-w-4xl rounded-lg border">
+        <div class="flex flex-wrap m-4">
+          <div class="w-full px-4 md:w-1/2">
+            <div class="mb-4">
+              <%= f.label :name, "お菓子名", class: "mb-1 inline-block text-lg text-gray-800" %>
+              <%= f.text_field :name, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "お菓子名を入力", autocomplete: "name" %>
+            </div>
+            <div class="mb-4">
+              <%= f.label :photo_image, "写真", class: "mb-1 inline-block text-lg text-gray-800" %>
+              <%= f.file_field :photo_image, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", accept: 'image/*' %>
+              <%= f.hidden_field :photo_image_cache %>
+              </div>
+            <div class="mb-4">
+              <%= f.label :prefecture_id, "都道府県", class: "mb-1 inline-block text-lg text-gray-800" %>
+              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "都道府県を選択" }, { class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring" } %>
+            </div>
+            <div class="mb-4">
+              <%= f.label :shop_name, "お店の名前", class: "mb-1 inline-block text-lg text-gray-800" %>
+              <%= f.text_field :shop_name, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "お店の名前を入力" %>
+            </div>
+            <div class="mb-4">
+              <%= f.label :address, "お店の住所", class: "mb-1 inline-block text-lg text-gray-800" %>
+              <%= f.text_field :address, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "お店の住所を入力", autocomplete: "address" %>
+            </div>
+          </div>
+          <div class="w-full px-4 md:w-1/2">
+            <div class="mb-4">
+              <%= f.label :ingredient_id, "あんこの材料", class: "mb-1 inline-block text-lg text-gray-800" %>
+              <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: "選択" }, { class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring" } %>
+            </div>
+            <div class="mb-4">
+              <%= f.label :cooking_method_id, "あんこの製法", class: "mb-2 inline-block text-lg text-gray-800" %>
+              <%= f.collection_select :cooking_method_id, CookingMethod.all, :id, :name, { prompt: "選択" }, { class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring" } %>
+            </div>
+            <div class="mb-4">
+              <%= f.label :comment, "コメント", class: "mb-2 inline-block text-lg text-gray-800" %>
+              <%= f.text_area :comment, rows: 3, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "コメントを入力" %>
+            </div>
+            <%= f.submit "投稿する", class: "w-full rounded-lg bg-customred px-8 py-3 mt-3 text-center font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

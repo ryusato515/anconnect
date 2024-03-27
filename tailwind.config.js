@@ -20,7 +20,8 @@ module.exports = {
         customorange: '#D19826',
         customorange_1: '#855B32',
         custompink: '#B19693',
-        customgreen: '#90B44B'
+        customgreen: '#90B44B',
+        customgreen_1: '#1B813E'
       },
     },
   },
