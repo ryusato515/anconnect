@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+    attributes:
+      user:
+        email: メールアドレス
+        name: 名前
+        password: パスワード
+        password_confirmation: パスワード確認
+      post:
+        name: お菓子名
+        photo_image: 写真
+        prefecture: 都道府県
+        shop_name: お店の名前
+        ingredient: あんこの材料
+        cooking_method: あんこの製法
+        comment: コメント
