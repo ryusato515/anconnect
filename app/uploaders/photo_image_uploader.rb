@@ -1,7 +1,7 @@
 class PhotoImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -22,16 +22,23 @@ class PhotoImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process scale: [200, 300]
+  process resize_to_limit: [800, 600]
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
+  # 一覧表示用のサムネイル画像を作成する
+  version :thumb do
+    process resize_to_limit: [600, 450] # 固定サイズ300x200pxにリサイズ
+  end
+
+  # 詳細表示用の画像を作成する
+  version :show do
+    process resize_to_fit: [400, 300] # 固定サイズ600x400pxにリサイズ
+  end
+
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:

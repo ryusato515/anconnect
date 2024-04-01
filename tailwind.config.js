@@ -23,6 +23,9 @@ module.exports = {
         customgreen: '#90B44B',
         customgreen_1: '#1B813E'
       },
+      width: {
+        '1/8': '12.5%',
+      },
     },
   },
 }

@@ -38,4 +38,7 @@ ja:
     flash_message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を編集しました"
+      not_updated: "%{item}を編集出来ませんでした"
+      deleted: "%{item}を削除しました"
       require_login: ログインしてください
