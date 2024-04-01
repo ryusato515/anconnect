@@ -32,6 +32,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
+
   def update
     if @post.update(post_params)
       redirect_to posts_path, success: t('defaults.flash_message.updated', item: Post.model_name.human)
@@ -42,14 +46,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    @post.destroy!
     redirect_to posts_path, success: t('defaults.flash_message.deleted', item: Post.model_name.human)
   end
 
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def post_params
