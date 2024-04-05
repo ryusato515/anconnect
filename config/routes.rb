@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: %i[show edit update destroy]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

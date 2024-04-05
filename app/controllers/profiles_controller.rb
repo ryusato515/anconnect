@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[edit update show]
+  before_action :set_user, only: %i[edit update show destroy]
 
   def edit; end
 
@@ -13,6 +13,12 @@ class ProfilesController < ApplicationController
   end
 
   def show; end
+
+  def destroy
+    @user.destroy
+    reset_session # ユーザーセッションをクリア
+    redirect_to root_path, notice: 'アカウントを削除しました。'
+  end
 
   private
 

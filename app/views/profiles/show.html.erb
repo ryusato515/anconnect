@@ -22,10 +22,10 @@
         <% end %>
         <div class="flex items-center justify-center bg-gray-100 p-2">
           <div class="flex flex-col items-center">
-            <p class="p-1 text-center text-base text-gray-500">
+            <div class="p-1 text-center text-base text-gray-500">
               <%= "退会は" %>
-              <%= link_to "こちら", "#", class: 'text-customorange hover:text-customorange_1 active:text-customorange_1 transition duration-100' %>
-            </p>
+              <%= link_to "こちら", "#", class: 'text-customorange hover:text-customorange_1 active:text-customorange_1 transition duration-100', data: { confirm: '本当に退会しますか？' }  %>
+            </div>
           </div>
         </div>
       </div>
