@@ -13,7 +13,7 @@
               <div class="mb-4">
                 <%= f.label :photo_image, "写真", class: "mb-1 inline-block text-lg text-gray-800" %>
                 <div style="display: flex; justify-content: center;">
-                  <%= image_tag @post.photo_image.url, id: 'preview', style: 'height:200px; width:auto;' if @post.photo_image.present? %>
+                  <%= image_tag @post.photo_image.url, class: 'height:200px; width:auto;' if @post.photo_image.present? %>
                 </div>
                 <%= f.file_field :photo_image, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", accept: 'image/*' %>
                 <%= f.hidden_field :photo_image_cache %>
