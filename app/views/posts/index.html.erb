@@ -1,7 +1,7 @@
 <div class="max-w-screen-3xl mx-auto bg-red-100 px-4 py-2">
   <div class="flex flex-col md:flex-row">
     <!-- 検索フォーム -->
-    <div class="md:w-1/4 lg:w-1/6 xl:w-1/8 roundexl:w-1/12d px-4 border border-gray-900 mb-4 md:mb-0 md:mr-4 whitespace-nowrap">
+    <div class="md:w-1/4 lg:w-1/6 xl:w-1/8 roundexl:w-1/12 rounded px-4 border border-gray-900 mb-4 md:mb-0 md:mr-4 whitespace-nowrap">
     <div class="text-2xl font-bold text-center pt-2 text-gray-800">検索条件</div>
       <%= form_with url: posts_path, method: :get, local: true, class: "mt-4" do |form| %>
         <div class="my-4">
@@ -42,7 +42,7 @@
     <!-- 投稿一覧 -->
     <div class="flex-auto">
       <div class="max-w-screen-3xl mx-auto bg-green-200">
-        <h1 class="text-2xl font-bold text-center bg-green-900 pt-2 text-gray-800">投稿一覧</h1>
+        <div class="text-2xl font-bold text-center bg-green-900 pt-2 text-gray-800">投稿一覧</div>
         <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 mt-4">
           <% if @posts.present? %>
             <%= render @posts %>
