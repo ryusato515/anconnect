@@ -7,14 +7,16 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resource :profile, only: %i[show edit update destroy]
+
+  resource :mypage, only: %i[show edit update] do
+  end
+  get 'mypage/index', to: 'mypages#index'
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
   get '/assets/*source', to: Proc.new{ |env| 
-  # ここではRails.root.join('public', 'assets', env['PATH_INFO'].byteslice(1..-1))が適切なパスです。
   Rails.application.assets_resolver.call(env)
   }, format: false
 end
