@@ -1,11 +1,24 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[edit update show destroy]
+  before_action :set_user, only: %i[index edit update show destroy]
+
+  def index
+    @posts = current_user.posts.includes(:user, :prefecture, :ingredient, :cooking_method).order(created_at: :desc)
+    @prefecture_id = params[:prefecture_id].presence
+    @ingredient_ids = params[:ingredient_id] || []
+    @cooking_method_ids = params[:cooking_method_id] || []
+    @name = params[:name]
+    @posts = @posts.search_by_prefecture(@prefecture_id)
+                   .search_by_ingredient(@ingredient_ids)
+                   .search_by_cooking_method(@cooking_method_ids)
+                   .search_by_name(@name)
+  end
+
 
   def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path, success: t('defaults.flash_message.updated', item: User.model_name.human)
+      redirect_to mypage_path, success: t('defaults.flash_message.updated', item: User.model_name.human)
     else
       flash.now['danger'] = t('defaults.flash_message.not_updated', item: User.model_name.human)
       render :edit, status: :unprocessable_entity
@@ -16,7 +29,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @user.destroy
-    reset_session # ユーザーセッションをクリア
+    reset_session
     redirect_to root_path, notice: 'アカウントを削除しました。'
   end
 

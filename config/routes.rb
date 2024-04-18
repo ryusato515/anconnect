@@ -5,18 +5,15 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create index show edit update destroy] do
     collection do
       get 'search'
-      get :favorites
-    end
-    member do
-      post 'favorite', to: 'favorites#create'
-      delete 'unfavorite', to: 'favorites#destroy'
+      get 'favorite'
     end
   end
-  resources :favorites, only: %i[create destroy]
+  resources :favorites, only: %i[index create destroy]
 
-  resource :mypage, only: %i[show edit update] do
+  resource :profile, only: %i[index show edit update] do
   end
-  get 'mypage/index', to: 'mypages#index'
+  get 'profile/index', to: 'profiles#index'
+  get 'favorite/index', to: 'favorites#index'
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
