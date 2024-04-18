@@ -21,7 +21,8 @@ module.exports = {
         customorange_1: '#855B32',
         custompink: '#B19693',
         customgreen: '#90B44B',
-        customgreen_1: '#1B813E'
+        customgreen_1: '#1B813E',
+        custompink: '#F596AA'
       },
       width: {
         '1/8': '12.5%',

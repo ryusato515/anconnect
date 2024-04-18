@@ -5,8 +5,14 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create index show edit update destroy] do
     collection do
       get 'search'
+      get :favorites
+    end
+    member do
+      post 'favorite', to: 'favorites#create'
+      delete 'unfavorite', to: 'favorites#destroy'
     end
   end
+  resources :favorites, only: %i[create destroy]
 
   resource :mypage, only: %i[show edit update] do
   end

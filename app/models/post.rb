@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   belongs_to :prefecture
   belongs_to :ingredient
   belongs_to :cooking_method
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
   validates :comment, presence: true, length: { maximum: 140 }
   validates :name, presence: true
