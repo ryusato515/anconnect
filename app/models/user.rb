@@ -3,7 +3,8 @@ class User < ApplicationRecord
 
   authenticates_with_sorcery!
   has_many :posts, dependent: :destroy 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
 
   validates :password, length: { minimum: 5 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{5,}\z/ }, if: -> { new_record? || changes[:crypted_password] }
@@ -13,4 +14,16 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true, length: { maximum: 255 }
+
+  def favorite(post)
+    favorite_posts << post
+  end
+
+  def unfavorite(post)
+    favorite_posts.destroy(post)
+  end
+
+  def favorite?(post)
+    favorite_posts.include?(post)
+  end
 end

@@ -1,7 +1,7 @@
 <div class="mx-auto max-w-7xl mb-2">
   <div class="text-center text-2xl font-bold text-gray-800 pt-2 lg:text-3xl">投稿詳細</div>
   <div class="flex justify-between px-10">
-    <%= link_to posts_path, class: "inline-block rounded-lg bg-customred px-2 py-2 text-white transition duration-200 hover:bg-gray-700" do %>
+    <%= link_to "javascript:history.back()", class: "inline-block rounded-lg bg-customred px-2 py-2 text-white transition duration-200 hover:bg-gray-700" do %>
       <i class="fas fa-arrow-left"></i> 戻る
     <% end %>
     <% if current_user == @post.user %>
@@ -12,16 +12,12 @@
   </div>
 </div>
 
-<div class="mx-auto max-w-7xl rounded-lg border">
+<div class="mx-auto max-w-7xl rounded-lg border m-2">
   <div class="m-4 flex flex-wrap">
     <div class="w-full px-6 md:w-1/2">
       <div class="mb-4 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-gray-800"><%= @post.name %></h2>
-        <div>
-          <button class="bg-customred inline-block rounded-lg px-2 py-2 text-white transition duration-200 hover:bg-gray-700">
-            <i class="fas fa-heart"></i> いいね
-          </button>
-        </div>
+        <%= render 'bookmark_buttons', { post: @post } %>
       </div>
 
       <div class="relative mb-4">
@@ -32,9 +28,13 @@
       <p class="mb-2 text-xl text-gray-600">あんこの材料： <%= @post.ingredient.name %></p>
       <p class="mb-4 text-xl text-gray-600">あんこの製法： <%= @post.cooking_method.name %></p>
 
-      <div class="mb-4 flex items-center">
-        <img src="https://source.unsplash.com/random/40x40" class="mr-2 rounded-full" />
-        <span class="text-gray-800">投稿者名</span>
+      <div class="flex items-center mt-4">
+        <% if @post.user.avatar.present? %>
+          <img src="<%= @post.user.avatar.url %>" class="mr-2 rounded-full w-12 h-12" />
+        <% else %>
+          <img src="https://via.placeholder.com/40x40" class="mr-2 rounded-full w-12 h-12" />
+        <% end %>
+        <span class="text-gray-800"><%= @post.user.name %></span>
       </div>
     </div>
 

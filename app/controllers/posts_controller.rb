@@ -49,6 +49,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: t('defaults.flash_message.deleted', item: Post.model_name.human)
   end
 
+  def favorites
+    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def set_post

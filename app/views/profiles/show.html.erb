@@ -2,10 +2,14 @@
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
       <div class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">プロフィール</div>
       <div class= 'mx-auto max-w-lg rounded-lg border'>
-        <%= form_with model: @user, url: mypage_path do |f| %>
+        <%= form_with model: @user, url: profile_path do |f| %>
         <div class="flex flex-col gap-4 p-4 md:p-8">
           <div class="rounded-full overflow-hidden w-32 h-32 mx-auto mb-6">
-            <%= image_tag @user.avatar.url, class: 'object-cover w-full h-full' if @user.avatar.present? %>
+            <% if @user.avatar.present? %>
+              <%= image_tag @user.avatar.url, class: "object-cover w-full h-full" %>
+            <% else %>
+              <%= image_tag "sweets_dorayaki.png", class: "object-cover w-full h-full" %>
+            <% end %>
           </div>
           <div>
             <%= f.label :name,  "プロフィール画像", class: 'mb-2 inline-block text-sm text-gray-800 sm:text-base' %>

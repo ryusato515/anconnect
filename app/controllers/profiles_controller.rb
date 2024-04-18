@@ -1,4 +1,4 @@
-class MypagesController < ApplicationController
+class ProfilesController < ApplicationController
   before_action :set_user, only: %i[index edit update show destroy]
 
   def index
