@@ -1,0 +1,29 @@
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    <div class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl">メールアドレス変更</div>
+    <div class= 'mx-auto max-w-lg rounded-lg border'>
+      <%= form_with model: @user, url: profile_path do |f| %>
+        <div class="flex flex-col gap-4 p-4 md:p-8">
+          <div>
+            <%= f.label :email, "現在のメールアドレス", class: 'mb-2 inline-block text-sm text-gray-800 sm:text-base' %>
+            <%= f.text_field :email, value: current_user.email, readonly: true, class: 'ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100' %>
+          </div>
+          <div>
+            <%= f.label :email, "新しいメールアドレス", class: 'mb-2 inline-block text-sm text-gray-800 sm:text-base' %>
+            <%= f.text_field :email, value: nil, class: 'ring-customorange w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-opacity-40 transition duration-100 focus:ring' %>
+          </div>
+      
+          <%= f.submit "編集する", class: 'bg-customred mt-3 block rounded-lg px-8 py-3 text-center font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base' %>
+        </div>
+      <% end %>
+      <div class="flex items-center justify-center bg-gray-100 p-2">
+        <div class="flex flex-col items-center">
+          <div class="p-1 text-center text-base text-gray-500">
+            <%= "退会は" %>
+            <%= link_to "こちら", "#", class: 'text-customorange hover:text-customorange_1 active:text-customorange_1 transition duration-100', data: { confirm: '本当に退会しますか？' }  %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

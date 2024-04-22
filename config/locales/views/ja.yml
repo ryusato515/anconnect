@@ -42,3 +42,8 @@ ja:
       not_updated: "%{item}を編集出来ませんでした"
       deleted: "%{item}を削除しました"
       require_login: ログインしてください
+  password_resets:
+    create:
+      success: パスワードリセット申請を送信しました
+    update:
+      success: パスワードを変更しました
