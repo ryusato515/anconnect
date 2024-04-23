@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root 'static_pages#top'
 
-  resources :users, only: %i[new create show update]
+  resources :users, only: %i[new create]
   resources :posts, only: %i[new create index show edit update destroy] do
     collection do
       get 'search'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :favorites, only: %i[index create destroy]
 
   resource :profile, only: %i[show edit update]
-  resources :profiles, only: :index
+  resources :my_posts, only: :index
   resources :password_resets, only: %i[new create edit update]
 
   get 'login', to: 'user_sessions#new'
