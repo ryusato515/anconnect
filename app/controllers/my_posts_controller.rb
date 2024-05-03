@@ -18,5 +18,4 @@ class MyPostsController < ApplicationController
   def set_user
     @user = User.find(session[:user_id])
   end
-
 end

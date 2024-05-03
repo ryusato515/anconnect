@@ -112,6 +112,10 @@ GEM
     diff-lcs (1.5.1)
     dockerfile-rails (1.6.6)
       rails (>= 3.0.0)
+    dotenv (3.1.0)
+    dotenv-rails (3.1.0)
+      dotenv (= 3.1.0)
+      railties (>= 6.1)
     erubi (1.12.0)
     factory_bot (6.4.6)
       activesupport (>= 5.0.0)
@@ -123,6 +127,7 @@ GEM
     faraday-net_http (3.1.0)
       net-http
     ffi (1.16.3)
+    geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -375,7 +380,9 @@ DEPENDENCIES
   cssbundling-rails
   debug
   dockerfile-rails (>= 1.6)
+  dotenv-rails
   factory_bot_rails
+  geocoder
   importmap-rails
   jbuilder
   jsbundling-rails

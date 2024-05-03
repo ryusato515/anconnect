@@ -21,11 +21,11 @@
             </div>
             <div class="mb-4">
               <%= f.label :shop_name, "お店の名前", class: "mb-1 inline-block text-lg text-gray-800" %>
-              <%= f.text_field :shop_name, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "お店の名前を入力" %>
+              <%= f.text_field :shop_name, id: "shop_name", class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "お店の名前を入力" %>
             </div>
             <div class="mb-4">
               <%= f.label :address, "お店の住所", class: "mb-1 inline-block text-lg text-gray-800" %>
-              <%= f.text_field :address, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "お店の住所を入力", autocomplete: "address" %>
+              <%= f.text_field :address, id: "address", class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "お店の住所を入力", autocomplete: "address" %>
             </div>
           </div>
           <div class="w-full px-4 md:w-1/2">
@@ -48,3 +48,7 @@
     </div>
   </div>
 <% end %>
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initMap"></script>
+</script>
