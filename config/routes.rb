@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'favorite'
+      get 'location_map'
     end
   end
   resources :favorites, only: %i[index create destroy]
