@@ -47,7 +47,30 @@
       <p class="mb-2 text-base text-xl font-bold text-gray-800"><%= @post.shop_name %></p>
       
       <p class="mb-4 text-base text-gray-600"><%= @post.address %></p>
-      <div id="map" class="mb-4 h-64 rounded-lg bg-gray-300">Google Map</div>
+      <% if @address.present? || @post.latitude.present? %>
+        <div id="map" class="mb-4 h-96 rounded-lg bg-gray-300"></div>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+function initMap() {
+  var location = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 18,
+    center: location,
+    streetViewControl: false, // ストリートビューのボタン非表示
+    fullscreenControl: false, // フルスクリーンボタン非表示
+    mapTypeControl: false, // 地図、航空写真のボタン非表示
+  });
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+}
+</script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap">
+</script>

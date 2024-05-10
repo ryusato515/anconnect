@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_22_014632) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_24_082420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_22_014632) do
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["cooking_method_id"], name: "index_posts_on_cooking_method_id"
     t.index ["ingredient_id"], name: "index_posts_on_ingredient_id"
     t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"

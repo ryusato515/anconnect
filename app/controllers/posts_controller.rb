@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: %i[show edit update destroy]
+  #before_action :set_search_params, only: %i[index location_map]
 
   def index
     @posts = Post.all.includes(:user, :prefecture, :ingredient, :cooking_method).order(created_at: :desc)
@@ -27,9 +28,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
+  def show; end
 
   def edit
     @post = current_user.posts.find(params[:id])
@@ -53,10 +52,34 @@ class PostsController < ApplicationController
     @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
   end
 
+  def location_map
+    @posts = Post.all.includes(:user, :prefecture, :ingredient, :cooking_method)
+    @prefecture_id = params[:prefecture_id].presence
+    @ingredient_ids = params[:ingredient_id] || []
+    @cooking_method_ids = params[:cooking_method_id] || []
+    @name = params[:name]
+    @posts = @posts.search_by_prefecture(@prefecture_id)
+                   .search_by_ingredient(@ingredient_ids)
+                   .search_by_cooking_method(@cooking_method_ids)
+                   .search_by_name(@name)
+  end
+
   private
 
   def set_post
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
+  end
+
+  def set_search_params
+    @posts = Post.all.includes(:user, :prefecture, :ingredient, :cooking_method).order(created_at: :desc)
+    @prefecture_id = params[:prefecture_id].presence
+    @ingredient_ids = params[:ingredient_id] || []
+    @cooking_method_ids = params[:cooking_method_id] || []
+    @name = params[:name]
+    @posts = @posts.search_by_prefecture(@prefecture_id)
+                   .search_by_ingredient(@ingredient_ids)
+                   .search_by_cooking_method(@cooking_method_ids)
+                   .search_by_name(@name)
   end
 
   def post_params

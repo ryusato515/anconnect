@@ -8,9 +8,9 @@ class FavoritesController < ApplicationController
     @cooking_method_ids = params[:cooking_method_id] || []
     @name = params[:name]
     @favorite_posts = @favorite_posts.search_by_prefecture(@prefecture_id)
-                   .search_by_ingredient(@ingredient_ids)
-                   .search_by_cooking_method(@cooking_method_ids)
-                   .search_by_name(@name)
+                                     .search_by_ingredient(@ingredient_ids)
+                                     .search_by_cooking_method(@cooking_method_ids)
+                                     .search_by_name(@name)
   end
 
   def create
@@ -23,10 +23,9 @@ class FavoritesController < ApplicationController
     current_user.unfavorite(@post)
   end
 
-    private
+  private
 
   def set_user
     @user = User.find(session[:user_id])
   end
-
 end
