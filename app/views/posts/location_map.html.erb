@@ -5,7 +5,7 @@
       <div class="text-2xl font-bold text-center pt-2 text-gray-800">
         検索条件
       </div>
-      <%= form_with url: posts_path, method: :get, local: true, class: "mt-4" do |form| %>
+      <%= form_with url: location_map_posts_path, method: :get, local: true, class: "mt-4" do |form| %>
         <div class="my-4">
           <h3 class="text-md font-bold text-gray-800">都道府県</h3>
           <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, { selected: @prefecture_id, include_blank: '選択なし' }, class: "w-full rounded border px-3 py-1 text-gray-800 border-gray-500" %>
@@ -61,6 +61,15 @@
     };
     const map = new google.maps.Map(mapElement, mapOptions);
 
+    <% @posts.each do |post| %>
+      <% if post.latitude.present? && post.longitude.present? %>
+        new google.maps.Marker({
+          position: { lat: <%= post.latitude %>, lng: <%= post.longitude %> },
+          map: map,
+          title: '<%= j post.shop_name %>'
+        });
+      <% end %>
+    <% end %>
 
   }
 </script>
