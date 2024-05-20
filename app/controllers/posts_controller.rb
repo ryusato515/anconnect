@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  #before_action :set_search_params, only: %i[index location_map]
 
   def index
     @posts = Post.all.includes(:user, :prefecture, :ingredient, :cooking_method).order(created_at: :desc)
@@ -68,18 +67,6 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def set_search_params
-    @posts = Post.all.includes(:user, :prefecture, :ingredient, :cooking_method).order(created_at: :desc)
-    @prefecture_id = params[:prefecture_id].presence
-    @ingredient_ids = params[:ingredient_id] || []
-    @cooking_method_ids = params[:cooking_method_id] || []
-    @name = params[:name]
-    @posts = @posts.search_by_prefecture(@prefecture_id)
-                   .search_by_ingredient(@ingredient_ids)
-                   .search_by_cooking_method(@cooking_method_ids)
-                   .search_by_name(@name)
   end
 
   def post_params
