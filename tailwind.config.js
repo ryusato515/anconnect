@@ -22,7 +22,7 @@ module.exports = {
         custompink: '#B19693',
         customgreen: '#90B44B',
         customgreen_1: '#1B813E',
-        custompink: '#F596AA'
+        custompink_1: '#FEDFE1'
       },
       width: {
         '1/8': '12.5%',

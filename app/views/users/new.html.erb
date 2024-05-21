@@ -1,9 +1,9 @@
 <%= form_with model: @user, url: users_path do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
-<div class="bg-white py-6 sm:py-8 lg:py-12">
+<div class="bg-red-50 py-6 sm:py-8 lg:py-12">
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
     <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl"><%= t('.title') %></h2>
-    <div class= 'mx-auto max-w-lg rounded-lg border'>
+    <div class= 'mx-auto max-w-lg rounded-lg border bg-white'>
       <div class="flex flex-col gap-4 p-4 md:p-8">
         <div>
           <%= f.label :name, t('.name'), class: 'mb-2 inline-block text-sm text-gray-800 sm:text-base' %>
@@ -28,7 +28,7 @@
         <%= f.submit t('.to_register_page'), class: 'bg-customred mt-3 block rounded-lg px-8 py-3 text-center font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base' %>
       </div>
 
-      <div class="flex items-center justify-center bg-gray-100 p-2">
+      <div class="flex items-center justify-center p-2">
         <div class="flex flex-col items-center">
           <p class="p-1 text-center text-base text-gray-500">
             <%= t('.login') %>
