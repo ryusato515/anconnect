@@ -9,8 +9,8 @@
 -%>
 <span class="page<%= ' current' if page.current? %>">
   <% if page.current? %>
-    <span class="mx-2 px-3 py-1 rounded border border-gray-300 bg-gray-100 text-gray-700 font-bold"><%= page %></span>
+    <span class="text-lg mr-1 px-3 py-2 rounded bg-customred bg-opacity-90 text-white font-bold"><%= page %></span>
   <% else %>
-    <%= link_to page, url, remote: remote, rel: page.rel, class: 'mx-2 px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-100' %>
+    <%= link_to page, url, remote: remote, rel: page.rel, class: 'text-lg mr-1 px-3 py-2 rounded bg-customred bg-opacity-20 text-gray-900 hover:bg-white' %>
   <% end %>
 </span>
