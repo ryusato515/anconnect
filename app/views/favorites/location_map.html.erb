@@ -1,0 +1,129 @@
+<div class="max-w-screen-3xl mx-auto bg-red-100 px-4 py-8">
+  <div class="flex flex-col md:flex-row">
+    <!-- 検索フォーム -->
+    <div class="md:w-1/4 lg:w-1/6 xl:w-1/8 roundexl:w-1/12 rounded px-4 py-2 border border-gray-900 mb-4 md:mb-0 md:mr-4 whitespace-nowrap">
+      <div class="text-2xl font-bold text-center pt-2 text-gray-800">
+        検索条件
+      </div>
+      <%= form_with url: location_map_posts_path, method: :get, local: true, class: "mt-4" do |form| %>
+        <div class="my-4">
+          <h3 class="text-md font-bold text-gray-800">都道府県</h3>
+          <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, { selected: @prefecture_id, include_blank: '選択なし' }, class: "w-full rounded border px-3 py-1 text-gray-800 border-gray-500" %>
+        </div>
+        <div class="mt-4">
+          <%= link_to posts_path, class: "bg-customgreen_1 font-bold text-white hover:bg-customgreen w-full rounded border px-3 py-1 inline-block text-center" do %>
+            投稿から探す
+          <% end %>
+        </div>
+        <div>
+          <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの材料</h4>
+          <% Ingredient.all.each_with_index do |ingredient, index| %>
+            <div class="mb-2 flex items-center">
+              <%= check_box_tag "ingredient_id[]", ingredient.id, @ingredient_ids.include?(ingredient.id.to_s), id: "ingredient_#{ingredient.id}", class: "form-checkbox h-3 w-3" %>
+              <%= label_tag "ingredient_#{ingredient.id}", ingredient.name, class: "ml-2 text-gray-800" %>
+            </div>
+          <% end %>
+        </div>
+        <div>
+          <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの製法</h4>
+          <% CookingMethod.all.each_with_index do |cooking_method, index| %>
+            <div class="mb-2 flex items-center">
+              <%= check_box_tag "cooking_method_id[]", cooking_method.id, @cooking_method_ids.include?(cooking_method.id.to_s), id: "cooking_method_#{cooking_method.id}", class: "form-checkbox h-3 w-3" %>
+              <%= label_tag "cooking_method_#{cooking_method.id}", cooking_method.name, class: "ml-2 text-gray-800" %>
+            </div>
+          <% end %>
+        </div>
+        <h3 class="mt-4 mb-2 text-md font-bold text-gray-800">お菓子名</h3>
+        <div class="mb-6">
+          <%= form.text_field :name, value: @name, placeholder: "どらやき,最中など・・・", class: "w-full rounded border px-3 py-1 placeholder:text-xs border-gray-500", autocomplete: 'name' %>
+        </div>
+        <div class="mb-4">
+          <%= form.submit "検索", class: "bg-customred font-bold text-white hover:bg-gray-600 w-full rounded border px-3 py-1" %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- 投稿一覧 -->
+    <div id="map" class="flex-auto">
+    </div>
+  </div>
+</div> 
+
+<script>
+  function initMap() {
+    const mapElement = document.getElementById('map');
+    const mapOptions = {
+      center: { lat: 38, lng: 139 },
+      zoom: 6,
+      streetViewControl: false,
+      fullscreenControl: false,
+      mapTypeControl: false
+    };
+    const map = new google.maps.Map(mapElement, mapOptions);
+
+    // 吹き出しを保持する変数
+    let infowindow = null;
+
+    <% @favorite_posts.each do |post| %>
+      (() => {
+        <% if post.latitude.present? && post.longitude.present? %>
+          let marker = new google.maps.Marker({
+            position: { lat: <%= post.latitude %>, lng: <%= post.longitude %> },
+            map: map,
+            title: '<%= j post.shop_name %>'
+          });
+
+          // 吹き出しのコンテンツ
+          const contentString = `
+            <div class="overflow-hidden bg-white shadow-md">
+              <h3 class="m-1 text-lg font-semibold"><%= post.name %></h3>
+              <%= image_tag post.photo_image.thumb.url, alt: "お菓子の画像", class: "w-full h-44 object-cover" %>
+              <div class="p-2">
+                <div class="mb-1 flex items-center">
+                  <div class="mr-2 text-sm text-gray-600 sm:text-base">店名　：</div>
+                  <div class="text-sm text-gray-800 sm:text-base"><%= post.shop_name %></div>
+                </div>
+                <div class="mb-1 flex items-center">
+                  <div class="mr-2 text-sm text-gray-600 sm:text-base">材料名：</div>
+                  <div class="text-sm text-gray-800 sm:text-base"><%= post.ingredient.name %></div>
+                </div>
+                <div class="mb-1 flex items-center">
+                  <div class="mr-2 text-sm text-gray-600 sm:text-base">製法名：</div>
+                  <div class="text-sm text-gray-800 sm:text-base"><%= post.cooking_method.name %></div>
+                </div>
+                <div class="flex justify-end">
+                  <div>
+                    <%= link_to "詳細へ", post_path(post), class: "bg-customred inline-block rounded-lg px-2 py-2 text-white transition duration-200 hover:bg-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+
+          // 吹き出しの作成
+          const infowindowInstance = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          // マーカーをクリックすると詳細の吹き出しを表示
+          marker.addListener('click', function() {
+            if (infowindow) {
+              infowindow.close();
+            }
+            infowindowInstance.open(map, marker);
+            infowindow = infowindowInstance;
+          });
+        <% end %>
+      })();
+    <% end %>
+    // 画面のどこを押しても吹き出しを閉じる
+    map.addListener('click', function() {
+      if (infowindow) {
+        infowindow.close();
+      }
+    });
+  }
+</script>
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap">
+</script>

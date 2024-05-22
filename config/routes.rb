@@ -10,10 +10,15 @@ Rails.application.routes.draw do
       get 'location_map'
     end
   end
-  resources :favorites, only: %i[index create destroy]
+
+  resources :favorites, only: %i[index create destroy] do
+    get 'location_map', on: :collection
+  end
 
   resource :profile, only: %i[show edit update]
-  resources :my_posts, only: :index
+  resources :my_posts, only: :index do
+    get 'location_map', on: :collection
+  end
   resources :password_resets, only: %i[new create edit update]
 
   get 'login', to: 'user_sessions#new'
