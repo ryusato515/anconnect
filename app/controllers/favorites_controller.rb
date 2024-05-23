@@ -24,6 +24,18 @@ class FavoritesController < ApplicationController
     current_user.unfavorite(@post)
   end
 
+  def location_map
+    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc)
+    @prefecture_id = params[:prefecture_id].presence
+    @ingredient_ids = params[:ingredient_id] || []
+    @cooking_method_ids = params[:cooking_method_id] || []
+    @name = params[:name]
+    @favorite_posts = @favorite_posts.search_by_prefecture(@prefecture_id)
+                                     .search_by_ingredient(@ingredient_ids)
+                                     .search_by_cooking_method(@cooking_method_ids)
+                                     .search_by_name(@name)
+  end
+
   private
 
   def set_user
