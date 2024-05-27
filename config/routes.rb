@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root 'static_pages#top'
   get 'terms_of_service', to: 'static_pages#terms_of_service'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
 
   resources :users, only: %i[new create]
   resources :posts, only: %i[new create index show edit update destroy] do

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @ingredient_ids = params[:ingredient_id] || []
     @cooking_method_ids = params[:cooking_method_id] || []
     @name = params[:name]
-  
+
     @posts = Post.all.includes(:user, :prefecture, :ingredient, :cooking_method)
                  .order(created_at: :desc)
                  .page(params[:page]).per(12)
