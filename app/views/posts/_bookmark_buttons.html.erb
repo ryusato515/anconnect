@@ -1,5 +1,7 @@
-<% if current_user.favorite?(post) %>
-  <%= render 'unbookmark', { post: post } %>
-<% else %>
-  <%= render 'bookmark', { post: post } %>
+<% if current_user.present? && !post.nil? %>
+  <% if current_user.favorite?(post) %>
+    <%= render 'unbookmark', { post: post } %>
+  <% else %>
+    <%= render 'bookmark', { post: post } %>
+  <% end %>
 <% end %>

@@ -4,6 +4,7 @@
   </div>
 
   <div class="md:flex text-base space-x-6 mx-6">
+    <%= link_to t('header.search'), posts_path, class: 'hover:text-gray-400' %>
     <%= link_to t('header.signup'), new_user_path, class: 'hover:text-gray-400' %>
     <%= link_to t('header.login'), login_path, class: 'hover:text-gray-400' %>
   </div>
