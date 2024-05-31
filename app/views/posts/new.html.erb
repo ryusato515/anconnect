@@ -34,7 +34,7 @@
               <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: "選択" }, { class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring" } %>
             </div>
             <div class="mb-4">
-              <%= f.label :cooking_method_id, "あんこの製法", class: "mb-2 inline-block text-lg text-gray-800" %>
+              <%= f.label :cooking_method_id, "あんこの製法", class: "mb-1 inline-block text-lg text-gray-800" %>
               <%= f.collection_select :cooking_method_id, CookingMethod.all, :id, :name, { prompt: "選択" }, { class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring" } %>
             </div>
             <div class="mb-4">
@@ -49,6 +49,6 @@
   </div>
 <% end %>
 
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initMap"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initialize"></script>
 </script>
