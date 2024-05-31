@@ -5,7 +5,7 @@
       <i class="fas fa-arrow-left"></i> 戻る
     <% end %>
     <% if current_user == @post.user %>
-      <%= link_to edit_post_path(@post), class: "bg-customred mr-2 inline-block rounded-lg px-2 py-2 text-white transition duration-200 hover:bg-gray-700" do %>
+      <%= link_to edit_post_path(@post), class: "bg-customred mr-2 inline-block rounded-lg px-2 py-2 text-white transition duration-200 hover:bg-gray-700", data: { turbo: false } do %>
         <i class="fas fa-edit"></i> 編集
       <% end %>
     <% end %>
