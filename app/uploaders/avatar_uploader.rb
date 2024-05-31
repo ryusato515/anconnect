@@ -1,10 +1,14 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  if Rails.env.production?
+    storage :fog # 本番環境ではfogを使用
+  else
+    storage :file # 開発環境とテスト環境ではfileを使用
+  end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -23,7 +27,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
-  #
   def default_url
     'sample.jpg'
   end
