@@ -14,4 +14,4 @@ RUN apt-get update -qq \
 RUN mkdir /app
 WORKDIR /app
 RUN gem install bundler
-COPY .. /app
+COPY . /app
