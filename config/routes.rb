@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   get 'terms_of_service', to: 'static_pages#terms_of_service'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
 
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback" 
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider  
+
   resources :users, only: %i[new create]
   resources :posts, only: %i[new create index show edit update destroy] do
     collection do
