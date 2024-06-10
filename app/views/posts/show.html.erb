@@ -28,13 +28,18 @@
       <p class="mb-2 text-xl text-gray-600">あんこの材料： <%= @post.ingredient.name %></p>
       <p class="mb-4 text-xl text-gray-600">あんこの製法： <%= @post.cooking_method.name %></p>
 
-      <div class="flex items-center mt-4">
-        <% if @post.user.avatar.present? %>
-          <img src="<%= @post.user.avatar.url %>" class="mr-2 rounded-full w-12 h-12" />
-        <% else %>
-          <%= image_tag "sweets_dorayaki.png", class: "mr-2 rounded-full w-12 h-12" %>
+      <div class="flex items-center mt-4 justify-between">
+        <div class="flex items-center">
+          <% if @post.user.avatar.present? %>
+            <img src="<%= @post.user.avatar.url %>" class="mr-2 rounded-full w-12 h-12" />
+          <% else %>
+            <%= image_tag "sweets_dorayaki.png", class: "mr-2 rounded-full w-12 h-12" %>
+          <% end %>
+          <span class="text-gray-800"><%= @post.user.name %></span>
+        </div>
+        <%= link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("「#{@post.shop_name}」おすすめの")}%0A#{ERB::Util.url_encode("「#{@post.name}」です！")}%0Aみなさんもぜひ試してみてください！%0A&url=#{ERB::Util.url_encode(request.original_url)}%0A&hashtags=あんこねくと", target: "_blank" do %>
+          <i class="fa-brands fa-square-x-twitter fa-2xl"></i>
         <% end %>
-        <span class="text-gray-800"><%= @post.user.name %></span>
       </div>
     </div>
 

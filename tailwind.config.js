@@ -16,9 +16,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customred: '#562E37',
+        customred: '#64363C',
         customorange: '#D19826',
-        customorange_1: '#855B32',
+        customorange_1: '#DAC9A6',
         custompink: '#B19693',
         custompink_1: '#D7C4BB',
         customgreen: '#90B44B',

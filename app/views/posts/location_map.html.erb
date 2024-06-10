@@ -91,7 +91,10 @@
                   <div class="mr-2 text-sm text-gray-600 sm:text-base">製法名：</div>
                   <div class="text-sm text-gray-800 sm:text-base"><%= post.cooking_method.name %></div>
                 </div>
-                <div class="flex justify-end">
+                <div class="flex items-center justify-between">
+                  <%= link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("「#{post.shop_name}」おすすめの")}%0A#{ERB::Util.url_encode("「#{post.name}」です！")}%0Aみなさんもぜひ試してみてください！%0A&url=#{ERB::Util.url_encode(request.original_url)}%0A&hashtags=あんこねくと", target: "_blank" do %>
+                    <i class="fa-brands fa-square-x-twitter fa-2xl"></i>
+                  <% end %>
                   <div>
                     <%= link_to "詳細へ", post_path(post), class: "bg-customred inline-block rounded-lg px-2 py-2 text-white transition duration-200 hover:bg-gray-700" %>
                   </div>
