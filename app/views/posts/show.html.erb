@@ -37,7 +37,7 @@
           <% end %>
           <span class="text-gray-800"><%= @post.user.name %></span>
         </div>
-        <%= link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("「#{@post.shop_name}」おすすめの")}%0A#{ERB::Util.url_encode("「#{@post.name}」です！")}%0Aみなさんもぜひ試してみてください！%0A&url=#{ERB::Util.url_encode(request.original_url)}%0A&hashtags=あんこねくと", target: "_blank" do %>
+        <%= link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("「#{@post.shop_name}」おすすめの")}%0A#{ERB::Util.url_encode("「#{@post.name}」です！")}%0Aみなさんもぜひ試してみてください！%0A&url=#{ERB::Util.url_encode(request.original_url)}&image=#{ERB::Util.url_encode(image_url('ogp.png'))}%0A&hashtags=あんこねくと", target: "_blank" do %>
           <i class="fa-brands fa-square-x-twitter fa-2xl"></i>
         <% end %>
       </div>
