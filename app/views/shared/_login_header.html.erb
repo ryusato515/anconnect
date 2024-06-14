@@ -20,7 +20,7 @@
     <%= link_to t('header.new_post'), new_post_path, class: 'hover:text-gray-400', data: { turbo: false } %>
 
     <details class="relative inline-block text-white">
-      <summary class="cursor-pointer outline-none list-none hover:text-gray-400">Myメニュー</summary>
+      <summary class="cursor-pointer outline-none list-none hover:text-gray-400">Myメニュー<i class="fas fa-chevron-down ml-1"></i></summary>
       <ul class="bg-customred rounded-t-none w-44 absolute right-0 sm:right-auto z-10 mt-3 py-2 shadow-lg">
         <%= link_to 'プロフィール', profile_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %>
         <%= link_to '投稿一覧', my_posts_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %>

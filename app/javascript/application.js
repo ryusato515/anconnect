@@ -4,4 +4,3 @@ import "controllers"
 
 import './place_autocomplete.js'
 import './accordion.js' 
-import './menu_toggle.js'
