@@ -1,13 +1,43 @@
-<header class="flex h-16 items-center justify-between bg-customred text-white">
-  <div class="text-2xl font-bold ml-6">
-    <%= link_to root_path, class: 'text-xl font-bold hover:text-gray-400' do %>
-      <%= image_tag 'logo1.png', style: 'max-width: 200px;' %>
+<header class="flex h-12 md:h-16 items-center justify-between bg-customred text-white">
+  <div class="ml-2">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo1.png', class: 'w-40 md:w-48', style: 'max-height: 85px;' %>
     <% end %>
   </div>
 
-  <div class="md:flex text-base space-x-6 mx-6">
+  <!-- ハンバーガーメニューのボタン -->
+  <div class="md:hidden mr-2">
+    <button id="menu-toggle" class="focus:outline-none">
+      <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+        <path d="M24 6H0V2h24v4zM24 10H0v4h24v-4zM24 18H0v4h24v-4z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- レスポンシブ対応のメニュー -->
+  <div class="hidden md:flex text-base space-x-6 mx-6">
     <%= link_to t('header.search'), posts_path, class: 'hover:text-gray-400' %>
     <%= link_to t('header.signup'), new_user_path, class: 'hover:text-gray-400' %>
     <%= link_to t('header.login'), login_path, class: 'hover:text-gray-400' %>
   </div>
 </header>
+
+<!-- モバイルメニュー -->
+<div id="mobile-menu" class="hidden md:hidden bg-customred text-white">
+  <ul>
+    <li><%= link_to t('header.search'), posts_path, class: 'block px-4 py-2 hover:bg-gray-600' %></li>
+    <li><%= link_to t('header.signup'), new_user_path, class: 'block px-4 py-2 hover:bg-gray-600' %></li>
+    <li><%= link_to t('header.login'), login_path, class: 'block px-4 py-2 hover:bg-gray-600' %></li>
+  </ul>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+});
+</script>

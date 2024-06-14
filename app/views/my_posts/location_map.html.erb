@@ -1,53 +1,59 @@
-<div class="max-w-screen-3xl mx-auto bg-red-100 px-4 py-8">
+<div class="max-w-screen-3xl mx-auto px-4 py-6">
   <div class="flex flex-col md:flex-row">
     <!-- 検索フォーム -->
-    <div class="md:w-1/4 lg:w-1/6 xl:w-1/8 roundexl:w-1/12 rounded px-4 py-2 border border-gray-900 mb-4 md:mb-0 md:mr-4 whitespace-nowrap">
-      <div class="text-2xl font-bold text-center pt-2 text-gray-800">
-        検索条件
+    <div class="md:w-1/4 lg:w-1/6 xl:w-1/8 roundexl:w-1/12 rounded px-4 border border-gray-900 mb-4 md:mb-0 md:mr-4 whitespace-nowrap">
+      <div class="flex items-center justify-between pb-2">
+        <div class="text-2xl font-bold text-center pt-2 text-gray-800 flex-grow">検索条件</div>
+        <button id="accordion-toggle" class="md:hidden">
+          <svg id="accordion-icon" class="w-6 h-6 transition-transform duration-300 ease-in-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
       </div>
-      <%= form_with url: location_map_posts_path, method: :get, local: true, class: "mt-4" do |form| %>
-        <div class="my-4">
-          <h3 class="text-md font-bold text-gray-800">都道府県</h3>
-          <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, { selected: @prefecture_id, include_blank: '選択なし' }, class: "w-full rounded border px-3 py-1 text-gray-800 border-gray-500" %>
-        </div>
-        <div class="mt-4">
-          <%= link_to posts_path, class: "bg-customgreen_1 font-bold text-white hover:bg-customgreen w-full rounded border px-3 py-1 inline-block text-center" do %>
-            投稿から探す
-          <% end %>
-        </div>
-        <div>
-          <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの材料</h4>
-          <% Ingredient.all.each_with_index do |ingredient, index| %>
-            <div class="mb-2 flex items-center">
-              <%= check_box_tag "ingredient_id[]", ingredient.id, @ingredient_ids.include?(ingredient.id.to_s), id: "ingredient_#{ingredient.id}", class: "form-checkbox h-3 w-3" %>
-              <%= label_tag "ingredient_#{ingredient.id}", ingredient.name, class: "ml-2 text-gray-800" %>
-            </div>
-          <% end %>
-        </div>
-        <div>
-          <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの製法</h4>
-          <% CookingMethod.all.each_with_index do |cooking_method, index| %>
-            <div class="mb-2 flex items-center">
-              <%= check_box_tag "cooking_method_id[]", cooking_method.id, @cooking_method_ids.include?(cooking_method.id.to_s), id: "cooking_method_#{cooking_method.id}", class: "form-checkbox h-3 w-3" %>
-              <%= label_tag "cooking_method_#{cooking_method.id}", cooking_method.name, class: "ml-2 text-gray-800" %>
-            </div>
-          <% end %>
-        </div>
-        <h3 class="mt-4 mb-2 text-md font-bold text-gray-800">お菓子名</h3>
-        <div class="mb-6">
-          <%= form.text_field :name, value: @name, placeholder: "どらやき,最中など・・・", class: "w-full rounded border px-3 py-1 placeholder:text-xs border-gray-500", autocomplete: 'name' %>
-        </div>
-        <div class="mb-4">
-          <%= form.submit "検索", class: "bg-customred font-bold text-white hover:bg-gray-600 w-full rounded border px-3 py-1" %>
-        </div>
-      <% end %>
+      <div id="accordion-content" class="hidden md:block">
+        <%= form_with url: location_map_posts_path, method: :get, local: true, class: "mt-4" do |form| %>
+          <div class="my-4">
+            <h3 class="text-md font-bold text-gray-800">都道府県</h3>
+            <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, { selected: @prefecture_id, include_blank: '選択なし' }, class: "w-full rounded border px-3 py-1 text-gray-800 border-gray-500" %>
+          </div>
+          <div class="mt-4">
+            <%= link_to posts_path, class: "bg-customgreen_1 font-bold text-white hover:bg-customgreen w-full rounded border px-3 py-1 inline-block text-center" do %>
+              投稿から探す
+            <% end %>
+          </div>
+          <div>
+            <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの材料</h4>
+            <% Ingredient.all.each_with_index do |ingredient, index| %>
+              <div class="mb-2 flex items-center">
+                <%= check_box_tag "ingredient_id[]", ingredient.id, @ingredient_ids.include?(ingredient.id.to_s), id: "ingredient_#{ingredient.id}", class: "form-checkbox h-3 w-3" %>
+                <%= label_tag "ingredient_#{ingredient.id}", ingredient.name, class: "ml-2 text-gray-800" %>
+              </div>
+            <% end %>
+          </div>
+          <div>
+            <h4 class="text-md mt-4 mb-2 font-bold text-gray-800">あんこの製法</h4>
+            <% CookingMethod.all.each_with_index do |cooking_method, index| %>
+              <div class="mb-2 flex items-center">
+                <%= check_box_tag "cooking_method_id[]", cooking_method.id, @cooking_method_ids.include?(cooking_method.id.to_s), id: "cooking_method_#{cooking_method.id}", class: "form-checkbox h-3 w-3" %>
+                <%= label_tag "cooking_method_#{cooking_method.id}", cooking_method.name, class: "ml-2 text-gray-800" %>
+              </div>
+            <% end %>
+          </div>
+          <h3 class="mt-4 mb-2 text-md font-bold text-gray-800">お菓子名</h3>
+          <div class="mb-6">
+            <%= form.text_field :name, value: @name, placeholder: "どらやき,最中など・・・", class: "w-full rounded border px-3 py-1 placeholder:text-xs border-gray-500", autocomplete: 'name' %>
+          </div>
+          <div class="mb-4">
+            <%= form.submit "検索", class: "bg-customred font-bold text-white hover:bg-gray-600 w-full rounded border px-3 py-1" %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <!-- 投稿一覧 -->
-    <div id="map" class="flex-auto">
-    </div>
+    <div id="map" class="flex-auto md:w-3/4 lg:w-5/6 xl:w-7/8 roundexl:w-11/12 h-96 md:h-auto"></div>
   </div>
-</div> 
+</div>
 
 <script>
   function initMap() {

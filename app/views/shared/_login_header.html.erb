@@ -1,16 +1,26 @@
-<header class="flex h-16 items-center justify-between bg-customred text-white">
-  <div class="text-2xl font-bold ml-6">
-    <%= link_to root_path, class: 'text-xl font-bold hover:text-gray-400' do %>
-      <%= image_tag 'logo1.png', style: 'max-width: 200px;' %>
+<header class="flex h-12 md:h-16 items-center justify-between bg-customred text-white">
+  <div class="ml-2">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo1.png', class: 'w-40 md:w-48', style: 'max-height: 85px;' %>
     <% end %>
   </div>
 
-  <div class="md:flex text-base space-x-6 mx-6">
+  <!-- ハンバーガーメニューのボタン -->
+  <div class="md:hidden mr-2">
+    <button id="menu-toggle" class="focus:outline-none">
+      <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+        <path d="M24 6H0V2h24v4zM24 10H0v4h24v-4zM24 18H0v4h24v-4z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- レスポンシブ対応のメニュー -->
+  <div class="hidden md:flex text-base space-x-6 mx-6">
     <%= link_to t('header.search'), posts_path, class: 'hover:text-gray-400', data: { turbo: false } %>
     <%= link_to t('header.new_post'), new_post_path, class: 'hover:text-gray-400', data: { turbo: false } %>
 
     <details class="relative inline-block text-white">
-      <summary class="cursor-pointer outline-none list-none hover:text-gray-400">Myメニュー</summary>
+      <summary class="cursor-pointer outline-none list-none hover:text-gray-400">Myメニュー<i class="fas fa-chevron-down ml-1"></i></summary>
       <ul class="bg-customred rounded-t-none w-44 absolute right-0 sm:right-auto z-10 mt-3 py-2 shadow-lg">
         <%= link_to 'プロフィール', profile_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %>
         <%= link_to '投稿一覧', my_posts_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %>
@@ -22,3 +32,36 @@
     <%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete }, class: 'hover:text-gray-400'%>
   </div>
 </header>
+
+<!-- モバイルメニュー -->
+<div id="mobile-menu" class="hidden md:hidden bg-customred text-white">
+  <ul>
+    <li><%= link_to t('header.search'), posts_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+    <li><%= link_to t('header.new_post'), new_post_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+    <details class="relative inline-block text-white w-full">
+    <summary class="cursor-pointer outline-none list-none hover:text-gray-400 block px-4 py-2 flex items-center">
+        Myメニュー
+        <i class="fas fa-chevron-down ml-1"></i>
+      </summary>
+      <ul class="bg-customred rounded-t-none w-full z-10 py-2 shadow-lg">
+        <li><%= link_to 'プロフィール', profile_path, class: 'block px-8 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+        <li><%= link_to '投稿一覧', my_posts_path, class: 'block px-8 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+        <li><%= link_to 'お気に入り', favorites_path, class: 'block px-8 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+        <li><%= link_to 'メールアドレス変更', edit_profile_path, class: 'block px-8 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+        <li><%= link_to 'パスワード変更', new_password_reset_path, class: 'block px-8 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+      </ul>
+    </details>
+    <li><%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete }, class: 'block px-4 py-2 hover:bg-gray-600'%></li>
+  </ul>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+});
+</script>
