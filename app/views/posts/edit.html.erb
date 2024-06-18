@@ -45,7 +45,7 @@
                 <%= f.label :comment, "コメント", class: "mb-2 inline-block text-lg text-gray-800" %>
                 <%= f.text_area :comment, rows: 3, class: "w-full rounded border bg-gray-50 px-3 py-3 text-gray-800 outline-none ring-customorange ring-opacity-40 transition duration-100 focus:ring", placeholder: "コメントを入力" %>
               </div>
-              <%= f.submit "編集する", class: "w-full rounded-lg bg-customred px-8 py-3 mt-3 text-center font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base" %>
+              <%= f.submit "編集する", class: "w-full rounded-lg bg-customred px-8 py-3 mt-3 text-center font-semibold text-white outline-none ring-gray-300 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:text-base", data: { turbo: false } %>
             </div>
           </div>
         </div>
