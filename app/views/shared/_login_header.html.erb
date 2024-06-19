@@ -1,7 +1,7 @@
 <header class="flex h-12 md:h-16 items-center justify-between bg-customred text-white">
   <div class="ml-2">
-    <%= link_to root_path do %>
-      <%= image_tag 'logo1.png', class: 'w-40 md:w-48', style: 'max-height: 85px;', data: { turbo: false } %>
+    <%= link_to root_path, data: { turbo: false } do %>
+      <%= image_tag 'logo1.png', class: 'w-40 md:w-48', style: 'max-height: 85px;' %>
     <% end %>
   </div>
 
