@@ -1,7 +1,7 @@
 <header class="flex h-12 md:h-16 items-center justify-between bg-customred text-white">
   <div class="ml-2">
     <%= link_to root_path do %>
-      <%= image_tag 'logo1.png', class: 'w-40 md:w-48', style: 'max-height: 85px;' %>
+      <%= image_tag 'logo1.png', class: 'w-40 md:w-48', style: 'max-height: 85px;', data: { turbo: false } %>
     <% end %>
   </div>
 
@@ -16,18 +16,18 @@
 
   <!-- レスポンシブ対応のメニュー -->
   <div class="hidden md:flex text-base space-x-6 mx-6">
-    <%= link_to t('header.search'), posts_path, class: 'hover:text-gray-400' %>
-    <%= link_to t('header.signup'), new_user_path, class: 'hover:text-gray-400' %>
-    <%= link_to t('header.login'), login_path, class: 'hover:text-gray-400' %>
+    <%= link_to t('header.search'), posts_path, class: 'hover:text-gray-400', data: { turbo: false } %>
+    <%= link_to t('header.signup'), new_user_path, class: 'hover:text-gray-400', data: { turbo: false } %>
+    <%= link_to t('header.login'), login_path, class: 'hover:text-gray-400', data: { turbo: false } %>
   </div>
 </header>
 
 <!-- モバイルメニュー -->
 <div id="mobile-menu" class="hidden md:hidden bg-customred text-white">
   <ul>
-    <li><%= link_to t('header.search'), posts_path, class: 'block px-4 py-2 hover:bg-gray-600' %></li>
-    <li><%= link_to t('header.signup'), new_user_path, class: 'block px-4 py-2 hover:bg-gray-600' %></li>
-    <li><%= link_to t('header.login'), login_path, class: 'block px-4 py-2 hover:bg-gray-600' %></li>
+    <li><%= link_to t('header.search'), posts_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+    <li><%= link_to t('header.signup'), new_user_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
+    <li><%= link_to t('header.login'), login_path, class: 'block px-4 py-2 hover:bg-gray-600', data: { turbo: false } %></li>
   </ul>
 </div>
 
