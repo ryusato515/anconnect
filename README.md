@@ -96,12 +96,12 @@ https://an-connect.com/
 | プロフィール画面 |　メールアドレス変更画面 |
 | ---- | ---- |
 | ![プロフィール画面](app/assets/images/README/an-connect.com_profile.jpg) | ![メールアドレス変更画面](app/assets/images/README/an-connect.com_profile_edit.jpg) |
-| プロフィール画像とユーザーネームの編集機能を実装しました。 | メールアドレス変更機能を実装しました。 |
+| プロフィール画像とユーザーネームの編集機能を実装しました。 | メールアドレスの変更機能を実装しました。 |
 
 | パスワード変更画面 |　 |
 | ---- | ---- |
 | ![パスワード変更画面](app/assets/images/README/an-connect.com_password_resets_new.jpg) |  |
-| パスワード変更機能を実装しました。 |  |
+| パスワードの変更機能を実装しました。 |  |
 
 <br />
 
