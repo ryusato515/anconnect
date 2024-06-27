@@ -132,6 +132,21 @@ https://an-connect.com/
 - SNS(X)シェア
 - Googleログイン
 
+## 使用技術
+
+| カテゴリー          | 使用技術                                              |
+| ----------------- | --------------------------------------------------   |
+| フロントエンド      | HTML, JavaScript, TailwindCSS       　　　            |
+| バックエンド        | Ruby, Ruby on Rails         　　　　                  |
+| インフラ           | Fly.io, AWS S3                                       |
+| データベース        | PostgreSQL                                           |
+| 開発環境　　        | Docker                                               |
+| CI/CD             | GitHub Actions                                       |
+| バージョン管理      | GitHub　　　　　                                       |
+| API               | Google Maps API                                      |
+
+<br />
+
 ## 画面遷移図
 [画面遷移図](https://www.figma.com/file/QtPiLQ1xJznPdVkiXgZuZJ/%E7%84%A1%E9%A1%8C?type=design&node-id=0-1&mode=design&t=yd9ESohdf4IH4Dph-0)
 
