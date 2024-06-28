@@ -63,45 +63,40 @@ https://an-connect.com/
 <br />
 
 ## 機能一覧
-| トップ画面(ログイン前) |　トップ画面(ログイン後) |
+| トップ画面 |　新規登録画面 |
 | ---- | ---- |
-| ![トップ画面(ログイン前)](app/assets/images/README/an-connect.com_.jpg) | ![トップ画面(ログイン後)](app/assets/images/README/an-connect.com_(2).jpg) |
-| サービスの説明とあんこの材料・種類のイメージ写真と説明を掲載。 | サービスの説明とあんこの材料・種類のイメージ写真と説明を掲載。 |
+| ![トップ画面](app/assets/images/README/an-connect.com_.jpg) | ![新規登録画面](app/assets/images/README/an-connect.com_users_new.jpg) |
+| サービスの説明とあんこの材料・種類のイメージ写真と説明を掲載。 | メールアドレスとパスワード、Googleアカウントでの会員登録を実装しました。 |
 
-| 新規登録画面 |　ログイン画面 |
+| ログイン画面 |　投稿一覧画面 |
 | ---- | ---- |
-| ![新規登録画面](app/assets/images/README/an-connect.com_users_new.jpg) | ![ログイン画面](app/assets/images/README/an-connect.com_login.jpg) |
-| メールアドレスとパスワード、Googleアカウントでの会員登録を実装しました。 | メールアドレスとパスワード、Googleアカウントでの認証機能を実装しました。 |
+| ![ログイン画面](app/assets/images/README/an-connect.com_login.jpg) | ![投稿一覧画面](app/assets/images/README/an-connect.com_posts.jpg) |
+| メールアドレスとパスワード、Googleアカウントでの認証機能を実装しました。 | 投稿一覧表示機能を実装しました。都道府県、あんこの材料・製法、キーワードで絞り込み検索が可能。 |
 
-| 投稿一覧画面 |　投稿一覧(マップ)画面 |
+| 投稿一覧(マップ)画面 |　投稿一覧(マップ)画面 |
 | ---- | ---- |
-| ![投稿一覧画面](app/assets/images/README/an-connect.com_posts.jpg) | ![投稿一覧(マップ)画面](app/assets/images/README/an-connect.com_posts(1).jpg) |
-| 投稿一覧表示機能を実装しました。都道府県、あんこの材料・製法、キーワードで絞り込み検索が可能。 | Maps JavaScript APIを使用して投稿をマップに表示しました。 |
+| ![投稿一覧画面](app/assets/images/README/an-connect.com_posts(1).jpg) | ![投稿一覧(マップ)画面](app/assets/images/README/an-connect.com_posts(2).jpg) |
+| Maps JavaScript APIを使用して投稿をマップに表示しました。 | 吹き出しで投稿が表示されるように実装しました。 |
 
-| 投稿一覧(マップ)画面 |　新規投稿画面 |
+| 投稿詳細画面 |　新規投稿画面 |
 | ---- | ---- |
-| ![投稿一覧(マップ)画面](app/assets/images/README/an-connect.com_posts(2).jpg) | ![新規投稿画面](aapp/assets/images/README/an-connect.com_posts_new.jpg) |
-| 吹き出しで投稿が表示されるように実装しました。 | Google Places APIを用いたオートコンプリート機能を実装しました。 |
+| ![投稿詳細画面](app/assets/images/README/an-connect.com_posts(3).jpg) | ![新規投稿画面](app/assets/images/README/an-connect.com_posts_new.jpg) |
+| 投稿の詳細画面を実装しました。 | Google Places APIを用いたオートコンプリート機能を実装しました。 |
 
-| 投稿詳細画面 |　投稿編集画面 |
+| 投稿編集画面 |　お気に入り投稿一覧画面 |
 | ---- | ---- |
-| ![投稿詳細画面](app/assets/images/README/an-connect.com_posts(3).jpg) | ![投稿編集画面](app/assets/images/README/an-connect.com_posts(4).jpg) |
-| 投稿の詳細画面を実装しました。。 | 投稿の編集画面を実装しました。 |
+| ![投稿編集画面](app/assets/images/README/an-connect.com_posts(4).jpg) | ![お気に入り投稿一覧画面](app/assets/images/README/an-connect.com_favorites.jpg) |
+| 投稿の編集画面を実装しました。 | お気に入りした投稿の一覧表示を実装しました。 |
 
-| 投稿(自身)一覧画面 |　お気に入り投稿一覧画面 |
+| 投稿(自身)一覧画面 |　プロフィール画面 |
 | ---- | ---- |
-| ![投稿(自身)一覧画面](app/assets/images/README/an-connect.com_my_posts.jpg) | ![お気に入り投稿一覧画面](app/assets/images/README/an-connect.com_favorites.jpg) |
-| 自身の投稿一覧表示機能を実装しました。 | お気に入りした投稿の一覧表示を実装しました。 |
+| ![投稿(自身)一覧画面](app/assets/images/README/an-connect.com_my_posts.jpg) | ![プロフィール画面](app/assets/images/README/an-connect.com_profile.jpg) |
+| 自身の投稿一覧表示機能を実装しました。 | プロフィール画像とユーザーネームの編集機能を実装しました。 |
 
-| プロフィール画面 |　メールアドレス変更画面 |
+| メールアドレス変更画面 |　パスワード変更画面 |
 | ---- | ---- |
-| ![プロフィール画面](app/assets/images/README/an-connect.com_profile.jpg) | ![メールアドレス変更画面](app/assets/images/README/an-connect.com_profile_edit.jpg) |
-| プロフィール画像とユーザーネームの編集機能を実装しました。 | メールアドレスの変更機能を実装しました。 |
-
-| パスワード変更画面 |　 |
-| ---- | ---- |
-| ![パスワード変更画面](app/assets/images/README/an-connect.com_password_resets_new.jpg) |  |
-| パスワードの変更機能を実装しました。 |  |
+| ![メールアドレス変更画面](app/assets/images/README/an-connect.com_profile_edit.jpg) | ![パスワード変更画面](app/assets/images/README/an-connect.com_password_resets_new.jpg) |
+| メールアドレスの変更機能を実装しました。 | パスワードの変更機能を実装しました。 |
 
 <br />
 
