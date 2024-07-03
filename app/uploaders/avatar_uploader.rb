@@ -32,9 +32,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
+  # WebP形式に変換
+  process :convert_to_webp
+
+  # サムネイルバージョンを作成
+  version :thumb do
+    process resize_to_fit: [100, 100]
+    process :convert_to_webp
+  end
+
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -44,7 +50,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg"
-  # end
+  def filename
+    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+  end
+
+  def convert_to_webp
+    manipulate! do |img|
+      img.format 'webp'
+      img
+    end
+  end
 end
