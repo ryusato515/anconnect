@@ -35,12 +35,12 @@ class PhotoImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   # 一覧表示用のサムネイル画像を作成する
   version :thumb do
-    process resize_to_limit: [600, 450] # 固定サイズ300x200pxにリサイズ
+    process resize_to_limit: [600, 450] 
   end
 
   # 詳細表示用の画像を作成する
   version :show do
-    process resize_to_fit: [400, 300] # 固定サイズ600x400pxにリサイズ
+    process resize_to_fit: [400, 300] 
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
@@ -51,7 +51,15 @@ class PhotoImageUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg"
-  # end
+  def filename
+    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+  end
+
+  def convert_to_webp
+    manipulate! do |img|
+      img.format 'webp'
+      img
+    end
+  end
+  
 end
