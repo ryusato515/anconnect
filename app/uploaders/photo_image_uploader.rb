@@ -35,12 +35,12 @@ class PhotoImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   # 一覧表示用のサムネイル画像を作成する
   version :thumb do
-    process resize_to_limit: [600, 450] 
+    process resize_to_limit: [600, 450]
   end
 
   # 詳細表示用の画像を作成する
   version :show do
-    process resize_to_fit: [400, 300] 
+    process resize_to_fit: [400, 300]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
@@ -61,5 +61,4 @@ class PhotoImageUploader < CarrierWave::Uploader::Base
       img
     end
   end
-  
 end
