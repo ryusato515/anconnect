@@ -21,7 +21,7 @@
       </div>
 
       <div class="relative mb-4">
-        <%= image_tag @post.photo_image.url, class: "w-[600px] h-[450px] object-cover rounded-lg" %>
+        <%= image_tag @post.photo_image.url, class: "w-[600px] h-[450px] object-cover rounded-lg cursor-pointer", id: "triggerPopup" %>
       </div>
 
       <p class="mb-2 text-xl text-gray-600">都道府県： <%= @post.prefecture.name %></p>
@@ -79,3 +79,10 @@ function initMap() {
 <script async
     src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap">
 </script>
+
+<div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="relative">
+    <img id="popupImage" src="" alt="Enlarged image" class="max-w-full max-h-[90vh] object-contain">
+    <button id="closePopup" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
+  </div>
+</div>
