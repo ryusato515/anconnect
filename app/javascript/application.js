@@ -4,3 +4,4 @@ import "controllers"
 
 import './place_autocomplete.js'
 import './accordion.js' 
+import './imagepopup.js'

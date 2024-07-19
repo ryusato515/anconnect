@@ -53,9 +53,8 @@
     <!-- 投稿一覧 -->
     <div id="map" class="flex-auto md:w-3/4 lg:w-5/6 xl:w-7/8 roundexl:w-11/12 h-96 md:h-auto"></div>
   </div>
-</div>
 
-<script>
+  <script>
   function initMap() {
     const mapElement = document.getElementById('map');
     const mapOptions = {
@@ -67,10 +66,9 @@
     };
     const map = new google.maps.Map(mapElement, mapOptions);
 
-    // 吹き出しを保持する変数
     let infowindow = null;
 
-    <% @posts.each do |post| %>
+    <% @posts.each_with_index do |post, index| %>
       (() => {
         <% if post.latitude.present? && post.longitude.present? %>
           let marker = new google.maps.Marker({
@@ -79,11 +77,10 @@
             title: '<%= j post.shop_name %>'
           });
 
-          // 吹き出しのコンテンツ
           const contentString = `
             <div class="overflow-hidden bg-white shadow-md">
               <h3 class="m-1 text-lg font-semibold"><%= post.name %></h3>
-              <%= image_tag post.photo_image.thumb.url, alt: "お菓子の画像", class: "w-full h-44 object-cover" %>
+              <img src="<%= post.photo_image.thumb.url %>" alt="お菓子の画像" class="w-full h-44 object-cover triggerPopup" data-full-image="<%= post.photo_image.url %>">
               <div class="p-2">
                 <div class="mb-1 flex items-center">
                   <div class="mr-2 text-sm text-gray-600 sm:text-base">店名　：</div>
@@ -114,23 +111,66 @@
             content: contentString
           });
 
-          // マーカーをクリックすると詳細の吹き出しを表示
           marker.addListener('click', function() {
             if (infowindow) {
               infowindow.close();
             }
             infowindowInstance.open(map, marker);
             infowindow = infowindowInstance;
+
+            // 吹き出しが開かれた後に実行
+            google.maps.event.addListener(infowindowInstance, 'domready', function() {
+              setupPopupTriggers();
+            });
           });
         <% end %>
       })();
     <% end %>
-    // 画面のどこを押しても吹き出しを閉じる
+
     map.addListener('click', function() {
       if (infowindow) {
         infowindow.close();
       }
     });
   }
+
+  function setupPopupTriggers() {
+    const triggerPopups = document.querySelectorAll('.triggerPopup');
+    const imagePopup = document.getElementById('imagePopup');
+    const popupImage = document.getElementById('popupImage');
+    const closePopup = document.getElementById('closePopup');
+
+    triggerPopups.forEach(trigger => {
+      trigger.addEventListener('click', function() {
+        popupImage.src = this.dataset.fullImage;
+        imagePopup.classList.remove('hidden');
+        imagePopup.classList.add('flex');
+      });
+    });
+
+    // ポップアップを閉じる処理
+    function closeImagePopup() {
+      imagePopup.classList.add('hidden');
+      imagePopup.classList.remove('flex');
+    }
+
+    closePopup.addEventListener('click', closeImagePopup);
+
+    imagePopup.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeImagePopup();
+      }
+    });
+  }
+
+  // DOMContentLoaded イベントリスナーを追加
+  document.addEventListener('DOMContentLoaded', setupPopupTriggers);
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap"></script>
+
+<div id="imagePopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="relative">
+    <img id="popupImage" src="" alt="Enlarged image" class="max-w-full max-h-[90vh] object-contain">
+    <button id="closePopup" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
+  </div>
+</div>
